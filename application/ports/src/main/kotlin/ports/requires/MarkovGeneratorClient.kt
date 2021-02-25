@@ -2,5 +2,5 @@ package ports.requires
 
 interface MarkovGeneratorClient {
 
-    fun createModel(): String
+    suspend fun createModel(): String
 }

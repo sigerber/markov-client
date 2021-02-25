@@ -15,4 +15,5 @@ dependencies {
     implementation("org.koin:koin-logger-slf4j:$koinVersion")
 
     testImplementation("io.ktor:ktor-server-test-host:$ktorVersion")
+    testImplementation("au.com.dius.pact.consumer:junit5:4.1.0")
 }
