@@ -18,6 +18,10 @@ class AppConfig(configRepository: ConfigRepository) {
         Deployment.create(config = config.getConfig("deployment"))
     }
 
+    val markovGeneratorClient by lazy {
+        MarkovGeneratorClient.create(config = config.getConfig("markov-generator"))
+    }
+
     class Deployment private constructor(private val config: Config) {
         val env: String by lazy {
             config.getString("env")
@@ -31,17 +35,24 @@ class AppConfig(configRepository: ConfigRepository) {
         }
     }
 
-    class RandomPerson private constructor(private val config: Config) {
-        val fetchUrl: String by lazy {
-            config.getString("fetch-url")
+    class MarkovGeneratorClient private constructor(private val config: Config) {
+        val scheme: String by lazy {
+            config.getString("scheme")
         }
-        val apiKey: String by lazy {
-            config.getString("api-key")
+
+        val host: String by lazy {
+            config.getString("host")
         }
+
+        val port: Int by lazy {
+            config.getInt("port")
+        }
+
         companion object {
-            internal fun create(config: Config) = RandomPerson(config = config)
+            internal fun create(config: Config) = MarkovGeneratorClient(config = config)
         }
     }
+
 }
 
 // Convert HOCON Config object into Properties (some libraries, e.g. HikariCP don't understand HOCON format).

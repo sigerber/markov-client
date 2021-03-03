@@ -29,6 +29,7 @@ object IntegrationTestContext {
         System.setProperty("APP_DEPLOYMENT_ENV", "test")
         System.setProperty("APP_VERSION", "0.0")
         System.setProperty("APP_BUILD_NUMBER", "0")
+        System.setProperty("MARKOV_GENERATOR_HOST", "localhost")
         val mainConfigProperties = Properties().apply {
 
         }

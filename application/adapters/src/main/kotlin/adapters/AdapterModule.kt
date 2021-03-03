@@ -40,7 +40,7 @@ val adapterModule = module(createdAtStart = true) {
     }
 
     single<MarkovGeneratorClient> {
-        MarkovGeneratorHttpClient(httpClientFactory = get())
+        MarkovGeneratorHttpClient(httpClientFactory = get(), appConfig = get())
     }
 
     // Web routes

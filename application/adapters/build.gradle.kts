@@ -1,6 +1,10 @@
 val ktorVersion: String by rootProject
 val koinVersion: String by rootProject
 
+plugins {
+    id("au.com.dius.pact").version("4.1.7")
+}
+
 dependencies {
     implementation(project(":application:ports"))
     implementation(project(":application:shared"))
@@ -16,4 +20,10 @@ dependencies {
 
     testImplementation("io.ktor:ktor-server-test-host:$ktorVersion")
     testImplementation("au.com.dius.pact.consumer:junit5:4.1.0")
+}
+
+pact {
+    publish {
+        pactBrokerUrl = "http://localhost:9292"
+    }
 }
