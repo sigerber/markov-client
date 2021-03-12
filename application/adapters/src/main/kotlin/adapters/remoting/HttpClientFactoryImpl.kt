@@ -21,6 +21,7 @@ import io.ktor.client.statement.HttpResponse
 import io.ktor.client.statement.readBytes
 import io.ktor.http.ContentType
 import io.ktor.http.contentType
+import net.pwall.json.JSONConfig
 import net.pwall.json.ktor.client.JSONKtorClient
 import shared.util.e
 
@@ -36,7 +37,9 @@ internal class HttpClientFactoryImpl : HttpClientFactory {
                 }
             }
             install(JsonFeature) {
-                serializer = JSONKtorClient()
+                val config = JSONConfig()
+                config.allowExtra = true
+                serializer = JSONKtorClient(config)
             }
             install(Logging) {
                 logger = Logger.DEFAULT

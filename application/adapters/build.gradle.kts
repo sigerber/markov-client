@@ -25,5 +25,7 @@ dependencies {
 pact {
     publish {
         pactBrokerUrl = "http://localhost:9292"
+        consumerVersion = System.getProperty("pact.consumer.version", project.version.toString())
+        tags = listOf("dev")
     }
 }
